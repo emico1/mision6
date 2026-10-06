@@ -1,3 +1,5 @@
+// Mision 6
+
 #include <algorithm>
 #include <chrono>
 #include <cmath>
@@ -18,14 +20,15 @@ const double EPS = 1e-9;
 using Lista = std::vector<std::vector<std::pair<int, double>>>;
 using Camino = std::vector<int>;
 
+// Red de vuelos. El subindice del vector ciudades es el identificador de cada ciudad.
 struct Red {
     std::vector<std::string> ciudades;
-    std::vector<std::pair<std::string, int>> indice;
-    std::vector<std::vector<double>> directo;
-    std::vector<std::vector<double>> costo;
-    std::vector<std::vector<int>> sig;
-    std::vector<std::vector<int>> tramos;
-    Lista ady;
+    std::vector<std::pair<std::string, int>> indice; // nombres en minusculas ordenados, para busqueda binaria
+    std::vector<std::vector<double>> directo;        // costo del vuelo directo, INF si no existe
+    std::vector<std::vector<double>> costo;          // costo de la ruta optima entre cada par
+    std::vector<std::vector<int>> sig;               // siguiente ciudad en la ruta optima
+    std::vector<std::vector<int>> tramos;            // numero de vuelos de la ruta optima
+    Lista ady;                                       // lista de adyacencia para Dijkstra
 };
 
 // O(L)
@@ -51,6 +54,7 @@ int buscar(const Red& r, const std::string& nombre) {
     return -1;
 }
 
+// Separa una linea CIUDAD1 CIUDAD2 COSTO. Como los nombres pueden llevar espacios, prueba cada espacio como punto de corte hasta que ambos lados sean ciudades conocidas.
 // O(L log n)
 bool leerVuelo(const Red& r, const std::string& linea, int& a, int& b, double& c) {
     std::size_t p = linea.find_last_of(" \t");
@@ -67,6 +71,7 @@ bool leerVuelo(const Red& r, const std::string& linea, int& a, int& b, double& c
     return false;
 }
 
+// Lee las ciudades hasta el delimitador # y despues los vuelos. Cada vuelo vale en ambos sentidos y si se repite se conserva el mas barato.
 // O(n^2 + m L log n)
 bool cargar(const std::string& archivo, Red& r) {
     std::ifstream in(archivo);
@@ -105,6 +110,9 @@ bool cargar(const std::string& archivo, Red& r) {
     return n > 0;
 }
 
+// Floyd-Warshall. Programacion dinamica, en la vuelta k se permite usar la ciudad k como escala y se pregunta si i -> k -> j mejora a i -> j.
+// sig guarda la siguiente ciudad para reconstruir la ruta.
+// En empate de costo se conserva la ruta con menos vuelos.
 // O(n^3) tiempo y O(n^2) espacio
 void floyd(Red& r) {
     int n = static_cast<int>(r.ciudades.size());
@@ -194,6 +202,7 @@ std::string texto(const Red& r, const Camino& p) {
     return s;
 }
 
+// Dijkstra con cola de prioridad. bloq marca ciudades prohibidas y noIr marca vuelos prohibidos desde el origen, las dos restricciones las usa el algoritmo de Yen.
 // O((n + m) log n)
 std::vector<double> dijkstra(const Lista& ady, int origen, const std::vector<char>& bloq,
                              const std::vector<char>& noIr, std::vector<int>& padre) {
@@ -315,6 +324,7 @@ void alcanzables(const Red& r) {
     else std::cout << cuenta << " ciudades alcanzables desde " << r.ciudades[a] << "\n";
 }
 
+// Consulta 3. Cada par se lista una sola vez porque el vuelo es de ida y vuelta.
 // O(n^2) pares por O(n) de imprimir cada ruta
 void porEscalas(const Red& r) {
     int e = static_cast<int>(pedirNumero("Numero de escalas", true));
@@ -329,6 +339,8 @@ void porEscalas(const Red& r) {
     std::cout << cuenta << " rutas optimas con " << e << " escalas\n";
 }
 
+// Ruta mas barata con un maximo de escalas. Programacion dinamica por capas, tras la capa k el vector d tiene el menor costo usando a lo mas k vuelos.
+// par[k][v] guarda desde que ciudad se llego a v en la capa k para reconstruir la ruta.
 // O(E (n + m)) tiempo y O(E n) espacio, E = maximo de escalas
 void limiteEscalas(const Red& r) {
     int a = pedirCiudad(r, "Ciudad origen");
@@ -386,6 +398,7 @@ void limiteEscalas(const Red& r) {
                    << r.tramos[a][b] - 1 << " escalas (" << texto(r, camino(r, a, b)) << ")\n";
 }
 
+// Muestra las rutas empatadas en costo y la siguiente alternativa mas barata.
 // O(R L (n + m) log n), R = rutas mostradas, L = ciudades por ruta
 void alternativas(const Red& r) {
     const int tope = 15;
@@ -418,6 +431,7 @@ void alternativas(const Red& r) {
     }
 }
 
+// Solo acepta vuelos nuevos o mas baratos, que son los casos que cubre el alta incremental.
 // O(n^2)
 void altaVuelo(Red& r) {
     int a = pedirCiudad(r, "Ciudad origen");
@@ -448,6 +462,7 @@ bool iguales(const std::vector<std::vector<double>>& x, const std::vector<std::v
     return true;
 }
 
+// Mide Floyd-Warshall, Dijkstra desde cada ciudad y el alta incremental sobre una copia, y verifica que los tres resultados coincidan.
 void comparar(Red& r) {
     int n = static_cast<int>(r.ciudades.size());
     const int reps = static_cast<int>(std::max(1.0, std::min(2000.0, 2e8 / (double(n) * n * n))));
@@ -493,6 +508,7 @@ int main() {
         std::cout << "No se pudo leer el archivo o no trae ciudades\n";
         return 1;
     }
+    // Floyd-Warshall se ejecuta una sola vez, despues cada consulta solo lee las matrices
     floyd(r);
     std::cout << r.ciudades.size() << " ciudades cargadas\n";
 
