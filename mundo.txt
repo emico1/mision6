@@ -1,0 +1,138 @@
+Amsterdam
+Bangkok
+Bogota
+Buenos Aires
+Cancun
+Chicago
+Ciudad de Mexico
+Dubai
+El Cairo
+Estambul
+Frankfurt
+Guadalajara
+Hong Kong
+Johannesburgo
+Lima
+Lisboa
+Londres
+Los Angeles
+Madrid
+Miami
+Monterrey
+Nueva Delhi
+Nueva York
+Panama
+Paris
+Roma
+Santiago
+Sao Paulo
+Seul
+Sidney
+Singapur
+Tijuana
+Tokio
+Toronto
+Vancouver
+#
+Amsterdam Frankfurt 70
+Amsterdam Londres 80
+Amsterdam Paris 70
+Amsterdam Roma 160
+Bangkok Hong Kong 190
+Bangkok Nueva Delhi 210
+Bangkok Seul 280
+Bangkok Sidney 690
+Bangkok Singapur 140
+Bangkok Tokio 450
+Bogota Cancun 200
+Bogota Lima 150
+Bogota Panama 100
+Buenos Aires Lima 300
+Buenos Aires Santiago 120
+Buenos Aires Sao Paulo 140
+Cancun Ciudad de Mexico 130
+Cancun Guadalajara 200
+Cancun Madrid 690
+Cancun Miami 90
+Cancun Monterrey 130
+Cancun Panama 130
+Chicago Miami 150
+Chicago Nueva York 140
+Chicago Toronto 80
+Chicago Vancouver 260
+Ciudad de Mexico Guadalajara 70
+Ciudad de Mexico Londres 610
+Ciudad de Mexico Los Angeles 250
+Ciudad de Mexico Madrid 610
+Ciudad de Mexico Monterrey 100
+Ciudad de Mexico Nueva York 250
+Ciudad de Mexico Santiago 510
+Ciudad de Mexico Sao Paulo 520
+Ciudad de Mexico Singapur 1150
+Ciudad de Mexico Tokio 1030
+Dubai El Cairo 250
+Dubai Estambul 240
+Dubai Johannesburgo 590
+Dubai Los Angeles 910
+Dubai Madrid 440
+Dubai Nueva Delhi 230
+Dubai Nueva York 900
+Dubai Sao Paulo 800
+Dubai Singapur 560
+Dubai Tokio 560
+El Cairo Estambul 120
+El Cairo Johannesburgo 550
+El Cairo Roma 190
+Estambul Frankfurt 170
+Estambul Roma 120
+Frankfurt Londres 80
+Frankfurt Los Angeles 750
+Frankfurt Paris 70
+Frankfurt Roma 120
+Frankfurt Singapur 760
+Frankfurt Tokio 720
+Guadalajara Monterrey 110
+Guadalajara Tijuana 180
+Hong Kong Nueva Delhi 330
+Hong Kong Seul 220
+Hong Kong Sidney 510
+Hong Kong Singapur 200
+Hong Kong Tokio 290
+Johannesburgo Londres 790
+Johannesburgo Sao Paulo 530
+Lima Panama 190
+Lima Santiago 240
+Lima Sao Paulo 350
+Lisboa Londres 140
+Lisboa Madrid 90
+Lisboa Paris 170
+Londres Los Angeles 710
+Londres Madrid 130
+Londres Paris 60
+Londres Tokio 620
+Los Angeles Madrid 860
+Los Angeles Monterrey 170
+Los Angeles Sao Paulo 830
+Los Angeles Sidney 840
+Los Angeles Tijuana 60
+Los Angeles Vancouver 180
+Madrid Nueva York 430
+Madrid Paris 110
+Madrid Tokio 900
+Miami Nueva York 140
+Miami Panama 160
+Miami Toronto 190
+Monterrey Nueva York 290
+Monterrey Tijuana 180
+Nueva Delhi Singapur 320
+Nueva York Sao Paulo 700
+Nueva York Singapur 1040
+Nueva York Toronto 70
+Paris Roma 110
+Santiago Sao Paulo 230
+Sao Paulo Singapur 1010
+Seul Tokio 120
+Sidney Singapur 480
+Singapur Tokio 440
+Tijuana Tokio 610
+Tijuana Vancouver 170

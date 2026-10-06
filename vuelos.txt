@@ -1,0 +1,25 @@
+Cancun
+Chihuahua
+Ciudad de Mexico
+Guadalajara
+La Paz
+Los Cabos
+Merida
+Monterrey
+Oaxaca
+Tijuana
+#
+Ciudad de Mexico Monterrey 1200
+Ciudad de Mexico Guadalajara 900
+Ciudad de Mexico Cancun 1500
+Ciudad de Mexico Oaxaca 800
+Ciudad de Mexico Merida 1400
+Ciudad de Mexico Tijuana 2600
+Monterrey Guadalajara 1100
+Monterrey Chihuahua 1000
+Monterrey Cancun 2900
+Guadalajara Tijuana 1500
+Chihuahua Tijuana 1300
+Cancun Merida 600
+Oaxaca Merida 1900
+La Paz Los Cabos 500
